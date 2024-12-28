@@ -1,7 +1,11 @@
+import { getCurrentUser } from "../actions/authActions";
+import LoginButton from "./LoginButton";
 import Logo from "./Logo";
 import Search from "./Search";
+import UserActions from "./UserActions";
 
-export const Navbar = () => {
+export const Navbar = async () => {
+  const user = await getCurrentUser();
   return (
     <header
       className="sticky top-0 z-50 flex justify-between
@@ -9,7 +13,7 @@ export const Navbar = () => {
     >
       <Logo />
       <Search />
-      <div>Login</div>
+      {user ? <UserActions user={user} /> : <LoginButton />}
     </header>
   );
 };
