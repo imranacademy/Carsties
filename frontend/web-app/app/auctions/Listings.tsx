@@ -21,6 +21,8 @@ export default function Listings() {
       searchTerm: state.searchTerm,
       orderBy: state.orderBy,
       filterBy: state.filterBy,
+      seller: state.seller,
+      winner: state.winner,
     }))
   );
 
@@ -33,7 +35,6 @@ export default function Listings() {
 
   useEffect(() => {
     getData(url).then((data) => {
-      console.log(data);
       setData(data);
     });
   }, [url]);
